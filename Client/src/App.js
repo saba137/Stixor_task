@@ -16,7 +16,12 @@ function App() {
 
   //State toggles the navigation menu
   const [collapse, setCollapse] = useState(false)
+  const [searchField, setSearchField] = useState("");
 
+  const handleChange=(value)=>{
+    setSearchField({value});
+    console.log("setSearchField", searchField)
+}
   const handleCollapse =(e) =>{
     e.preventDefault()
     setCollapse(v => !v)
@@ -62,7 +67,7 @@ function App() {
 
 
           {/* Top menu of the page  */}
-          <TopMenu/>
+          <TopMenu handleChange = {handleChange}/>
 
           {/* Main page to display information  where the page switch takes place*/}
           <div className={page}>
@@ -70,7 +75,8 @@ function App() {
               <div className="is-page-content">
                 <Switch>
                   <Route exact path="/">
-                    <Users/>
+                   
+                    <Users searchField={searchField}/>
                   </Route>
                   <Route path="/User" >
                     <UserDetails/>

@@ -1,7 +1,11 @@
-import React from 'react'
+import { useQuery, gql } from '@apollo/client';
+// import React, { Component } from 'react'
+import React, {useEffect, useState} from 'react';
+import UserCard from '../Components/UserCard';
 import logohere from '../Images/logohere.png'
 
-function TopMenu(){
+const TopMenu = (props) =>{
+   
     return (
         <div className="top-menu is-shadow-2">
             <div className="menu-logo-container">
@@ -14,10 +18,13 @@ function TopMenu(){
                     type="search"
                     name="name"
                     autoComplete="off"
+                    onChange={(e)=>props.handleChange(e.target.value)}
                 />
             </div>
+            
+            
         </div>
     );
-}
 
+}
 export default TopMenu;

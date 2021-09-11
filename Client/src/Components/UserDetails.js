@@ -17,7 +17,7 @@ query($id: Int!){
 function UserDetails(props){
 
     //Pass the id to the Query to fetch details of the related Album
-    const id = null
+    const id = props.id;
 
     const{data, loading, error, networkStatus} = useQuery(USER_DETAIL,{
         variables: {id},
@@ -39,6 +39,7 @@ function UserDetails(props){
                      style={{display: 'flex', flexFlow: 'column'}}>
                     <div className="is-row">
                         <div className="is-100">
+                            
                             <h3>{data['getAllUsers'][0].firstName}</h3>
                         </div>
                     </div>
@@ -62,6 +63,10 @@ function UserDetails(props){
                             <tr>
                                 <td>Password</td>
                                 <td><p>{data['getAllUsers'][0].password}</p></td>
+                            </tr>
+                            <tr>
+                                <td>Id:</td>
+                                <td><p>{data['getAllUsers'][0].id}</p></td>
                             </tr>
                         <tbody>
                         </tbody>
